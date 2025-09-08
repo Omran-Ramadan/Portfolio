@@ -385,7 +385,7 @@ img {
     font-size: 1.3em;
   }
 }
-@media screen and (min-width: 576px) {
+@media screen and (max-width: 576px) {
   .container {
     padding-inline: 1rem;
   }
@@ -619,61 +619,6 @@ img {
   .nav__list {
     flex-direction: column;
     gap: 2rem;
-  }
-}
-.nav__dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.nav__dropdown-toggle {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  width: 100%;
-  text-align: left;
-}
-
-.nav__sublist {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #222;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 10;
-  width: 100%; /* يجعل العرض مطابق لزر Projects */
-  box-sizing: border-box;
-}
-
-.nav__dropdown.open .nav__sublist {
-  display: block;
-}
-
-.sub-link {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #ccc;
-  text-decoration: none;
-}
-
-.sub-link:hover {
-  color: var(--first-color);
-}
-
-/* في الشاشات الصغيرة: القائمة تظهر بشكل مدمج تحت الزر */
-@media (max-width: 768px) {
-  .nav__sublist {
-    position: static;
-    background: none;
-    box-shadow: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0;
-    width: 100%;
   }
 }
 
@@ -948,102 +893,11 @@ section#about{
 
 /*============== projects ================*/
 
-.filter-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 6rem;
-  flex-wrap: wrap;
-}
 
-.filter-btn {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  background-color: #444;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.project-card {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.project-card.hide {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
-  position: absolute;
-}
-
-/*=============== PROJECTS ===============*/
-
-.projects-section {
-  padding: 4rem 2rem;
-  margin-top: 3rem;
-
-}
-
-/* أزرار التصنيف */
-.filter-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  padding: 0.6rem 1.2rem;
-  border: none;
-   background: #a8dadc;
-  color: #1d1e2c;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background-color: #223E48;
-  color: var(--title-color);
-}
-
-/* شبكة البطاقات */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-/* البطاقات */
-.project-card {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  position: relative;
-}
-
-.project-card.hide {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
-  position: absolute;
-}
-
-/* مسافة إضافية للشاشات الكبيرة */
-@media (min-width: 1024px) {
-  .projects-section{
-    margin-top: 0rem;
-  }
-  .projects-section .filter-buttons{
-    margin-bottom: 6rem;
-  }
-
-}
 
 /* ⭐ تصميم المعرض */
 .projects-section {
-  padding: 16px 20px 40px;
+  padding: 16px 20px ;
   background-color: #e2e6e6;
   color: #f3f3f3;
   width: 100%;
@@ -1115,10 +969,10 @@ section#about{
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (max-width: 576px) {
   .projects-section {
     padding: 16px 10px;
-    margin-top: 0px;
+    
   }
 
   .project-grid {
@@ -1292,7 +1146,7 @@ section#about{
  
 
   }
-@media (min-width: 576px){
+@media (max-width: 576px){
   .education-box,.experience-box{
     width: 400px;
   }
