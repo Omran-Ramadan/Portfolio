@@ -30,14 +30,15 @@
       <ul class="nav__list">
         <li><a href="#home" class="nav__link sub-link active-link">Home</a></li>
         <li><a href="#about" class="nav__link sub-link">About</a></li>
-        <li class="nav__item  nav__dropdown">
-           <a href="#" class="nav__link ">Projects ▾</a>
-
-         <ul class="nav__sublist">
-          <li><a href="#Eprojects" class="nav__link sub-link sup">Architecture</a></li>
-          <li><a href="#Iprojects" class="nav__link sub-link sup">Interior</a></li>
-      </ul>
-       </li>
+        <li class="nav__item nav__dropdown">
+  <div class="nav__dropdown-wrapper">
+    <button class="nav__link nav__dropdown-toggle">Projects ▾</button>
+    <ul class="nav__sublist dropdown-menu">
+      <li><a href="#Eprojects" class="nav__link sub-link">Architecture</a></li>
+      <li><a href="#Iprojects" class="nav__link sub-link">Interior</a></li>
+    </ul>
+  </div>
+</li>
         <li><a href="#education" class="nav__link sub-link">Education</a></li>
         <li><a href="#MySkills" class="nav__link sub-link">Work experience</a></li>
         <li><a href="#contact" class="nav__link sub-link">Contact</a></li>
@@ -453,20 +454,7 @@ presentations and mood boards in realistic rendering</p>
     navMenu.classList.remove('show-menu');
   });
 </script>
-<script>
-  // فتح القائمة المنسدلة
-  document.querySelector('.nav__dropdown > .nav__link').addEventListener('click', function(e) {
-    e.preventDefault();
-    this.parentElement.classList.toggle('open');
-  });
 
-  // إغلاق القائمة الجانبية عند اختيار أحد الروابط الفرعية
-  document.querySelectorAll('.sub-link').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.remove('show-menu'); // تأكد من أن هذا الكلاس هو المستخدم لفتح القائمة
-    });
-  });
-</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
   const dropdown = document.querySelector(".nav__dropdown");
@@ -479,7 +467,55 @@ presentations and mood boards in realistic rendering</p>
   });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownToggle = document.querySelector(".nav__dropdown-toggle");
+  const dropdown = document.querySelector(".nav__dropdown");
 
+  // فتح وإغلاق القائمة المنسدلة عند الضغط على Projects
+  dropdownToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle("open");
+  });
+
+  // إغلاق القائمة المنسدلة عند اختيار أحد العناصر
+  document.querySelectorAll(".nav__sublist .nav__link").forEach(link => {
+    link.addEventListener("click", () => {
+      dropdown.classList.remove("open");
+    });
+  });
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const navMenu = document.getElementById("nav-menu");
+  const navLinks = navMenu.querySelectorAll(".nav__link");
+
+  navLinks.forEach(link => {
+    const isDropdownToggle = link.classList.contains("nav__dropdown-toggle");
+    const isInsideDropdown = link.closest(".nav__sublist");
+
+    // إذا لم يكن زر Projects ولا أحد روابطه الفرعية
+    if (!isDropdownToggle && !isInsideDropdown) {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("show-menu");
+      });
+    }
+  });
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const navMenu = document.getElementById("nav-menu");
+  const dropdownLinks = navMenu.querySelectorAll(".nav__sublist .nav__link");
+
+  dropdownLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("show-menu");
+    });
+  });
+});
+</script>
 <script src="https://unpkg.com/scrollreveal"></script>
 
   <script src="asset/js/index.js"></script>

@@ -101,7 +101,6 @@ img {
 }
 
 
-  
     .main-background {
   background: var(--background-color);
   width: 100%;
@@ -612,7 +611,89 @@ img {
     gap: 2rem;
   }
 }
+.nav__dropdown {
+  position: relative;
+}
 
+.nav__dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.nav__dropdown-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  text-align: left;
+}
+
+.nav__sublist {
+  display: none;
+  position: absolute;
+  top: 100%; /* تنزل تحت الزر مباشرة */
+  left: 0;
+  background-color: #1d4a47;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 999;
+  width: 100%; /* نفس عرض الزر */
+  box-sizing: border-box;
+}
+
+.nav__dropdown.open .nav__sublist {
+  display: block;
+}
+
+.nav__sublist li a {
+  display: block;
+  padding: 0.75rem 0.3rem;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav__sublist li a:hover {
+  background-color: #d4af37;
+  color: #000;
+}
+
+.nav__sublist li:last-child a {
+  border-bottom: none;
+}
+@media screen and (max-width: 768px) {
+  .nav__dropdown-wrapper {
+    width: 100%;
+  }
+
+  .nav__sublist {
+    position: static;
+    display: none;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+  }
+
+  .nav__dropdown.open .nav__sublist {
+    display: block;
+  }
+
+  .nav__sublist li a {
+    padding: 1rem 1rem; /* زيادة الارتفاع لتأخذ مساحة عنصرين تقريبًا */
+    font-size: 1rem;
+    color: var(--text-color, #333);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .nav__sublist li:last-child a {
+    border-bottom: none;
+  }
+}
 /*=============== ABOUT ===============*/
 /* خلفية سوداء للقسم */
 
@@ -1080,15 +1161,12 @@ section#about{
 .section-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 40px;
-  padding: 35px 10%;
+  
+  padding: 35px 10px;
   margin-top: 20px; 
   
 }
-.section-education,
-.section-experience {
-  display: block;
-}
+
 
 /* قسم التعليم */
 .education-title {
@@ -1220,15 +1298,17 @@ section#about{
 @media (max-width: 768px) {
   .section-wrapper {
     grid-template-columns: 1fr;
-    padding-left: 20px;
-    margin-right: 200px;
+    padding-left: 0px;
+   
   }
  
 
   }
 @media (max-width: 576px){
   .education-box,.experience-box{
-    width: 400px;
+    max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
   }
 }
 .education-contents,
@@ -1236,6 +1316,7 @@ section#about{
   padding: 0 30px;
   /* إزالة الخط الجانبي القديم */
   border-left: none;
+  
 }
 
 /* الصندوق الزمني */
