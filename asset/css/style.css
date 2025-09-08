@@ -385,7 +385,7 @@ img {
     font-size: 1.3em;
   }
 }
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 576px) {
   .container {
     padding-inline: 1rem;
   }
@@ -1115,7 +1115,7 @@ section#about{
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 576px) {
   .projects-section {
     padding: 16px 10px;
     margin-top: 0px;
@@ -1292,7 +1292,7 @@ section#about{
  
 
   }
-@media (max-width: 576px){
+@media (min-width: 576px){
   .education-box,.experience-box{
     width: 400px;
   }
