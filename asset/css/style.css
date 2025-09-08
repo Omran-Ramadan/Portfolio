@@ -66,7 +66,8 @@ body {
 
 h1, h2, h3 {
   color: var(--title-color);
-  font-weight: var(--font-semi-bold);
+  
+  font-size: clamp(16px, 2vw, 20px);
 }
 
 ul {
@@ -733,6 +734,7 @@ section#about{
   margin-top: 20px;
   font-size: 25px;
   margin-bottom: 15px;
+  
 }
 
 .about-left ul,
@@ -1310,6 +1312,7 @@ section#about{
   width: 100%;
   box-sizing: border-box;
   }
+
 }
 .education-contents,
 .experience-contents {
@@ -1432,3 +1435,9 @@ footer{
 }
 
 
+@media screen and (max-width: 395px){
+  .perfil__img{
+    margin-left: -30px;
+  }
+  
+}
