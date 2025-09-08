@@ -893,11 +893,102 @@ section#about{
 
 /*============== projects ================*/
 
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 6rem;
+  flex-wrap: wrap;
+}
 
+.filter-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background-color: #444;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.project-card {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card.hide {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  position: absolute;
+}
+
+/*=============== PROJECTS ===============*/
+
+.projects-section {
+  padding: 4rem 2rem;
+  margin-top: 3rem;
+
+}
+
+/* أزرار التصنيف */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+   background: #a8dadc;
+  color: #1d1e2c;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: #223E48;
+  color: var(--title-color);
+}
+
+/* شبكة البطاقات */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* البطاقات */
+.project-card {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  position: relative;
+}
+
+.project-card.hide {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  position: absolute;
+}
+
+/* مسافة إضافية للشاشات الكبيرة */
+@media (min-width: 1024px) {
+  .projects-section{
+    margin-top: 0rem;
+  }
+  .projects-section .filter-buttons{
+    margin-bottom: 6rem;
+  }
+
+}
 
 /* ⭐ تصميم المعرض */
 .projects-section {
-  padding: 16px 20px ;
+  padding: 16px 20px 40px;
   background-color: #e2e6e6;
   color: #f3f3f3;
   width: 100%;
@@ -972,7 +1063,7 @@ section#about{
 @media screen and (max-width: 576px) {
   .projects-section {
     padding: 16px 10px;
-    
+    margin-top: 0px;
   }
 
   .project-grid {
@@ -993,9 +1084,7 @@ section#about{
   .project-card img {
     height: 200px;
   }
-  
 }
-
 /*=============== Education Timeline Section ===============*/
 .section-wrapper {
   display: grid;
