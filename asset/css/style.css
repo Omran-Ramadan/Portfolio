@@ -100,17 +100,8 @@ img {
   margin-bottom: 1.5rem;
 }
 
-.main {
-  overflow: hidden;
-}
-  body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      
-       color: white;
-      font-family: 'Cairo', sans-serif;
-    }
+
+  
     .main-background {
   background: var(--background-color);
   width: 100%;
