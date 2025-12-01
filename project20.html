@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Tarfa Art Center</title>
+
+  <!-- Swiper + GSAP -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    body {
+      background: #111;
+      color: #f3f3f3;
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #eaeaea;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .swiper {
+      padding: 40px 0;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: cover;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2; /* يخلي الصورة فوق أي عنصر */
+      cursor: pointer; /* يبين إنها قابلة للضغط */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff !important;
+    }
+
+    /* أوصاف برا */
+    .descriptions {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .slide-description {
+      font-size: 1rem;
+      color: #ccc;
+      margin-top: 15px;
+      display: none; /* مخفي افتراضياً */
+      position: relative;
+      z-index: 1; /* يخلي الوصف تحت الصور */
+    }
+    .slide-description.active {
+      display: block; /* يظهر فقط الوصف النشط */
+    }
+
+    .back-button {
+      display: block;
+      margin: 40px auto;
+      text-align: center;
+      text-decoration: none;
+      background-color: transparent;
+      border: 1px solid #0B5B56;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #0B5B56;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      width: fit-content;
+    }
+
+    .back-button:hover {
+      background-color: #0B5B56;
+      color: #fff;
+    }
+
+    .swiper-pagination-bullet {
+      background-color: hsl(228, 8%, 65%);
+      opacity: 1;
+      transition: background-color 0.3s ease;
+    }
+    .swiper-pagination-bullet:hover {
+      background-color: #0B5B56;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: #0B5B56;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      text-align: center;
+      padding-top: 80px;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 80vh;
+    }
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: #eaeaea;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .back-button { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Al Tarfa Art Center</h1>
+    <p>Sharjah</p>
+  </header>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="asset/img/TARFAH ART CENTER/01.png" alt=""></div>
+      <div class="swiper-slide"><img src="asset/img/TARFAH ART CENTER/02.png" alt=""></div>
+      <div class="swiper-slide"><img src="asset/img/TARFAH ART CENTER/03.png" alt=""></div>
+      <div class="swiper-slide"><img src="asset/img/TARFAH ART CENTER/04.png" alt=""></div>
+      <div class="swiper-slide"><img src="asset/img/TARFAH ART CENTER/05.png" alt=""></div>
+      <div class="swiper-slide"><img src="asset/img/TARFAH ART CENTER/A01.JPG" alt=""></div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <!-- أوصاف برا -->
+  <div class="descriptions">
+    <div id="desc-1" class="slide-description">
+The Art Center is designed as an open, community-oriented space that blends art creation and exhibition.    </div>
+    <div id="desc-2" class="slide-description">Its concept focuses on transparency, using light-filled studios, flexible galleries, and a central atrium to connect visitors with the creative process.</div>
+    <div id="desc-3" class="slide-description">A simple material palette and passive lighting strategies enhance sustainability.</div>
+    <div id="desc-4" class="slide-description">The result is a welcoming cultural hub that supports creativity, learning, and public engagement.</div>
+  </div>
+
+  <a href="index.html#projects" class="back-button">← RETURN TO PORTFOLIO</a>
+
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">×</span>
+    <img id="modal-img" src="" alt="Expanded Image">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper(".mySwiper", {
+      loop: false,
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      on: {
+        slideChange: function () {
+          // أخفي كل الأوصاف
+          document.querySelectorAll(".slide-description").forEach(desc => {
+            desc.classList.remove("active");
+          });
+
+          // استخدم الـ realIndex من Swiper
+          const currentIndex = swiper.realIndex; // يبدأ من 0
+          const descId = "desc-" + (currentIndex + 1);
+
+          // أظهر الوصف الصحيح
+          document.getElementById(descId).classList.add("active");
+        }
+      }
+    });
+
+    // أول مرة: أظهر الوصف الأول
+    document.getElementById("desc-1").classList.add("active");
+
+    // GSAP Animations
+    gsap.from("header h1", { y: -30, opacity: 0, duration: 1 });
+    gsap.from(".swiper-slide", {
+      scrollTrigger: {
+        trigger: ".swiper",
+        start: "top 90%"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2
+    });
+    gsap.from(".descriptions", {
+      scrollTrigger: {
+        trigger: ".descriptions",
+        start: "top 95%"
+      },
+      opacity: 0,
+      y: 20,
+      duration: 1
+    });
+    gsap.from(".back-button", {
+      scrollTrigger: {
+        trigger: ".back-button",
+        start: "top 95%"
+      },
+      opacity: 0,
+      y: 20,
+      duration: 1
+    });
+
+    // فتح الصور في الـ Modal
+    document.querySelectorAll(".swiper-slide img").forEach(img => {
+      img.addEventListener("click", () => {
+        document.getElementById("modal-img").src = img.src;
+        document.getElementById("modal").style.display = "block";
+      });
+    });
+
+    // إغلاق الـ Modal
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

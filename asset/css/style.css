@@ -1118,6 +1118,7 @@ section#about{
   margin-top: 15px;
   font-size: 1.1rem;
   color: #fff;
+  font-weight: normal;
 }
 .project-card{
   position: relative;
